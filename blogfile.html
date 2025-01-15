@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHATT'S blog</title>
+    <style>
+        @font-face {
+            font-weight: 400;
+            font-style: normal;
+            font-family: circular;
+            src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-weight: 700;
+            font-style: normal;
+            font-family: circular;
+            src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+        }
+
+        body {
+            font-family: circular, Palatino, "Palatino Linotype", "Book Antiqua", serif;
+            line-height: 1.5;
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: rgb(51, 51, 51);
+            background-color: white;
+        }
+
+        nav {
+            margin: 0 0 80px 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: rgb(204, 0, 0);
+            text-decoration: none;
+            margin-right: 40px;
+            font-size: 16px;
+        }
+
+        .schatt-link {
+            font-family: monospace;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: normal;
+            margin: 0 0 30px 0;
+        }
+
+        p {
+            margin: 0 0 25px 0;
+            font-size: 18px;
+        }
+
+        .intro {
+            margin-bottom: 60px;
+        }
+
+        .article-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .article-list li {
+            margin-bottom: 40px;
+        }
+
+        .article-title {
+            color: rgb(204, 0, 0);
+            text-decoration: none;
+            font-size: 24px;
+            line-height: 1.3;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-btn {
+            display: inline-block;
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 2px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+            vertical-align: 1px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .footnote {
+            font-size: 16px;
+            color: rgb(102, 102, 102);
+            margin-left: 4px;
+        }
+
+        a {
+            color: rgb(51, 51, 51);
+            text-decoration: underline;
+        }
+
+        sup {
+            font-size: 12px;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        article p {
+            margin-right: 200px;
+            position: relative;
+        }
+
+        .footnote-text {
+            position: absolute;
+            right: -200px;
+            width: 180px;
+            top: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            color: rgb(102, 102, 102);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="" class="schatt-link">&lt;SCHATT&gt;</a>
+        <a href="index.html">ABOUT</a>
+    </nav>
+
+    <main>
+        <h1>Schatt</h1>
+        
+        <p class="intro">
+            This is the website of Subhajit Chatterjee. I have a passion for deep learning and machine learning. This is my effort to share my experiences and knowledge that I gain with the world.
+        </p>
+
+        <ul class="article-list">
+            <li>
+                <a href="#" class="article-title">
+                    Shrinking Models, Expanding Possibilities: A Dive into Quantization
+                </a>
+                <article>
+                    <p>
+                        My previous experiences of being GPU-broke along with irritating OOM errors led me to wonder if there was a way to compress the models for use on edge devices and devices with lesser compute.
+                        This led me to discover quantization.<sup>1</sup>
+                        <span class="footnote-text">1. I remember someone telling me that Tim Dettmers wrote the CUDA kernel for quantization in one sitting. Absolutely legendary!
+                    </p>
+                    <p>
+                        I am writing this blog in an effort to share the learnings and also to test my own understanding in this topic.
+                    </p>
+                </article>
+            </li>
+            <li>
+                <a href="#" class="article-title">
+                    Some thumb rules for efficient inferencing and cost planning of transformer models
+                </a>
+                <article>
+                    <p>
+                        Inferencing models can be costly. This blog explores cutting-edge techniques for optimizing  model inference, enabling high-performance with reduced computational costs.<sup>2</sup>
+                        <span class="footnote-text">2. This exploration was inspired by several blog posts including kipply's blog.</span>
+                    </p>
+                    <p>It is interesting how optimizing model inference through techniques like reducing memory-bound operations and GPU kernel fusion can significantly boost performance and resource efficiency.
+                    </p>
+                </article>
+            </li>
+            <li>
+                <a href="#" class="article-title">
+                    LoRa & QLoRa: A Deep Dive into Efficient Fine-tuning Methods
+                </a>
+                <article>
+                    <p>
+                        LoRA and QLoRA are like the secret sauce for model fine-tuning—less weight, more power. You get all the benefits with a fraction of the overhead, making you wonder why you didn’t try them sooner.<sup>3</sup>
+                        <span class="footnote-text">3. I heard the idea of LoRa in 2024. </span>
+                        This post explores various techniques for optimizing memory access in parallel computing environments.
+                    </p>
+                </article>
+            </li>
+            <!-- <li>
+                <a href="#" class="article-title">
+                    Implementing Lock-Free Data Structures: A Deep Dive
+                </a>
+                <article>
+                    <p>
+                        Lock-free programming presents unique challenges and opportunities for high-performance systems.<sup>4</sup>
+                        <span class="footnote-text">4. Lock-free algorithms can provide better scalability but require careful attention to memory ordering.</span>
+                        We'll examine practical implementations of common data structures using lock-free techniques.
+                    </p>
+                </article>
+            </li> -->
+        </ul>
+    </main>
+</body>
+</html>

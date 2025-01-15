@@ -1,314 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhajit Chatterjee</title>
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #fff;
-        }
-
-        /* Header styles with profile image */
-        .header {
-            margin-bottom: 40px;
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-        }
-
-        .header-content {
-            flex: 1;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* Navigation */
-        .nav {
-            margin-bottom: 40px;
-        }
-
-        .nav a {
-            color: #666;
-            text-decoration: none;
-            margin-right: 20px;
-            font-size: 15px;
-        }
-
-        .nav a:hover {
-            color: #000;
-        }
-
-        /* Timeline styles */
-        .timeline {
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .timeline-item {
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #0366d6;
-        }
-
-        .timeline-item::after {
-            content: "";
-            position: absolute;
-            left: 4px;
-            top: 18px;
-            width: 2px;
-            height: calc(100% + 12px);
-            background: #eee;
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-date {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .timeline-description {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Content sections */
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #222;
-        }
-
-        /* Blog posts list */
-        .post {
-            margin-bottom: 25px;
-        }
-
-        .post-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #222;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .post-title:hover {
-            color: #0366d6;
-        }
-
-        .post-date {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .post-description {
-            color: #444;
-            font-size: 15px;
-        }
-
-        /* Projects grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .project-card {
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        .project-card h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Publication styles */
-        .publication {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .publication:last-child {
-            border-bottom: none;
-        }
-
-        .publication h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .publication .authors {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .publication .venue {
-            font-size: 14px;
-            color: #0366d6;
-        }
-
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px;
-            background: #eee;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            opacity: 0.7;
-        }
-
-        .dark-mode-toggle:hover {
-            opacity: 1;
-        }
-
-        /* Dark mode styles */
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #eee;
-        }
-
-        body.dark-mode .header h1,
-        body.dark-mode h2,
-        body.dark-mode .post-title {
-            color: #fff;
-        }
-
-        body.dark-mode .nav a,
-        body.dark-mode .post-date,
-        body.dark-mode .post-description {
-            color: #aaa;
-        }
-
-        body.dark-mode .project-card {
-            border-color: #333;
-            background: #222;
-        }
-
-        body.dark-mode .publication {
-            border-bottom-color: #333;
-        }
-
-        body.dark-mode .timeline-item::before {
-            background: #58a6ff;
-        }
-
-        body.dark-mode .timeline-item::after {
-            background: #333;
-        }
-
-        body.dark-mode .timeline-date,
-        body.dark-mode .timeline-description {
-            color: #aaa;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 600px) {
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subhajit Chatterjee</title>
+        <style>
+            @font-face {
+                font-weight: 400;
+                font-style: normal;
+                font-family: circular;
+                src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2') format('woff2');
+            }
+    
+            @font-face {
+                font-weight: 700;
+                font-style: normal;
+                font-family: circular;
+                src: url('chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Bold.woff2') format('woff2');
+            }
+    
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
             body {
-                padding: 15px;
+                font-family: circular, "Palatino Linotype", Palatino, serif;
+                line-height: 1.6;
+                color: rgb(51, 51, 51);
+                max-width: 850px;
+                margin: 40px auto;
+                padding: 0 20px;
+                background-color: white;
             }
-
+    
+            /* Header styles */
             .header {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-            }
-
-            .header h1 {
-                font-size: 28px;
-            }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 20px;
-            }
-
-            .nav {
+                margin-bottom: 40px;
                 display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
+                align-items: flex-start;
+                gap: 30px;
             }
-
+    
+            .header-content {
+                flex: 1;
+            }
+    
+            .header h1 {
+                font-size: 32px;
+                font-weight: normal;
+                margin-bottom: 10px;
+                color: rgb(51, 51, 51);
+            }
+    
+            .header p {
+                color: rgb(102, 102, 102);
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+    
+            /* Navigation */
+            .nav {
+                margin-bottom: 40px;
+            }
+    
             .nav a {
-                margin-right: 0;
+                color: rgb(204, 0, 0);
+                text-decoration: none;
+                margin-right: 20px;
+                font-size: 16px;
             }
-
+    
+            .nav a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Timeline styles */
+            .timeline {
+                margin: 40px 0;
+                position: relative;
+            }
+    
+            .timeline-item {
+                margin-bottom: 30px;
+                position: relative;
+                padding-left: 25px;
+            }
+    
+            .timeline-item::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 8px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #ff0000;
+            }
+    
+            .timeline-item::after {
+                content: "";
+                position: absolute;
+                left: 4px;
+                top: 18px;
+                width: 2px;
+                height: calc(100% + 12px);
+                background: #eee;
+            }
+    
+            .timeline-item:last-child::after {
+                display: none;
+            }
+    
+            .timeline-date {
+                font-size: 14px;
+                color: rgb(102, 102, 102);
+                margin-bottom: 5px;
+            }
+    
+            .timeline-title {
+                font-weight: normal;
+                margin-bottom: 5px;
+                color: rgb(51, 51, 51);
+            }
+    
+            .timeline-description {
+                color: rgb(102, 102, 102);
+                font-size: 14px;
+            }
+    
+            /* Content sections */
+            section {
+                margin-bottom: 40px;
+            }
+    
+            h2 {
+                font-size: 24px;
+                font-weight: normal;
+                margin-bottom: 20px;
+                color: rgb(51, 51, 51);
+            }
+    
+            /* Projects grid */
             .projects-grid {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+                margin-bottom: 40px;
             }
-        }
-    </style>
-</head>
+    
+            .project-card {
+                border: 1px solid #eee;
+                padding: 15px;
+                border-radius: 4px;
+            }
+    
+            .project-card h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+                font-weight: normal;
+                color: rgb(51, 51, 51);
+            }
+    
+            .project-card p {
+                font-size: 14px;
+                color: rgb(102, 102, 102);
+            }
+    
+            /* Publication styles */
+            li a {
+                color: rgb(204, 0, 0);
+                text-decoration: none;
+                font-weight: normal;
+            }
+    
+            li a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Dark mode toggle */
+            .dark-mode-toggle {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 10px;
+                background: #eee;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                opacity: 0.7;
+            }
+    
+            .dark-mode-toggle:hover {
+                opacity: 1;
+            }
+    
+            /* Dark mode styles */
+            body.dark-mode {
+                background: #1a1a1a;
+                color: #eee;
+            }
+    
+            body.dark-mode .header h1,
+            body.dark-mode h2,
+            body.dark-mode .project-card h3 {
+                color: #fff;
+            }
+    
+            body.dark-mode .nav a {
+                color: rgb(255, 102, 102);
+            }
+    
+            body.dark-mode li a {
+                color: rgb(255, 102, 102);
+            }
+    
+            body.dark-mode .project-card {
+                border-color: #333;
+                background: #222;
+            }
+    
+            body.dark-mode .timeline-item::before {
+                background: #ff0000;
+            }
+    
+            body.dark-mode .timeline-item::after {
+                background: #333;
+            }
+    
+            body.dark-mode .header p,
+            body.dark-mode .timeline-date,
+            body.dark-mode .timeline-description,
+            body.dark-mode .project-card p {
+                color: #aaa;
+            }
+    
+            /* Responsive styles */
+            @media (max-width: 600px) {
+                body {
+                    padding: 15px;
+                }
+    
+                .header {
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    text-align: center;
+                }
+    
+                .header h1 {
+                    font-size: 28px;
+                }
+    
+                .nav {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    justify-content: center;
+                }
+    
+                .nav a {
+                    margin-right: 0;
+                }
+    
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
 <body>
     <header class="header">
         <div class="header-content">
@@ -317,7 +277,7 @@
             <nav class="nav">
                 <a href="#about">About</a>
                 <a href="#timeline">Timeline</a>
-                <a href="#blog">Blog</a>
+                <a href="blogfile.html">Blog</a>
                 <a href="#projects">Projects</a>
                 <a href="#publications">Publications</a>
                 <a href="https://x.com/total_moksha" target="_blank">Twitter</a>
@@ -328,84 +288,123 @@
 
     <section id="about">
         <p><section id="about">
-            <p>I build AI stuff because AGI is cool (and hopefully they'll remember that when they take over). Currently training neural networks, debugging mysterious errors, and explaining to my family why I need another GPU. Sometimes I write about my adventures in deep learning, when my models aren't busy throwing cryptic error messages at me.</p>
+            <p>I build AI stuff because AGI is cool (and hopefully they'll remember that when they take over). Usually I can be found training neural networks, debugging mysterious errors, and explaining to my family why I need another GPU. Sometimes I write about my adventures in deep learning, when my models aren't busy throwing cryptic error messages at me.
+                At present getting my hands dirty with GPUs and parallel programming.
+            </p>
     </section>
 
     <section id="timeline" class="timeline">
         <h2>Timeline</h2>
         <div class="timeline-item">
+            <div class="timeline-date">Jul 2025</div>
+            <div class="timeline-title">Oracle Netsuite</div>
+            <div class="timeline-description">Upcoming Associate Software Engineer</div>
+        </div>
+        <div class="timeline-item">
             <div class="timeline-date">Sep 2024</div>
             <div class="timeline-title">DatSol solutions</div>
-            <div class="timeline-description">Worked on zero-shot voice cloning and deployment</div>
+            <div class="timeline-description">Developed a POC for zero-shot voice cloning, achieving 8x faster inference using vLLM optimization and A100-based parallel processing, with advanced acoustic and prosodic feature extraction for high-quality voice transformation.</div>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">June 2024 - Aug 2024</div>
-            <div class="timeline-title">Project Intern  (Generative AI) at Oracle</div>
-            <div class="timeline-description">Worked on voice based transaction systems to automate purchase and sales handling.</div>
+            <div class="timeline-title">Project Intern (Generative AI) at Oracle</div>
+            <div class="timeline-description">Developed a voice-based transaction system for purchase and sales orders, reducing inference latency by 7x and costs through distributed processing with smaller transformer models, while enhancing parsing accuracy and integrating APIs for seamless transaction handling.</div>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">Dec 2022 - Apr 2023</div>
             <div class="timeline-title">Informal Research</div>
-            <div class="timeline-description">under <a href="https://sites.google.com/iiit-bh.ac.in/drpuspanjalimohapatra/home">Dr. Puspanjali Mohapatra</a> on swarm algorithms and Neural networks </div>
+            <div class="timeline-description">under <a href="https://sites.google.com/iiit-bh.ac.in/drpuspanjalimohapatra/home", style="color: #ff0000; text-decoration: none;">Dr. Puspanjali Mohapatra</a> on swarm algorithms and Neural networks. Implemented Extreme Learning Machine (ELM) with Salp Swarm Algorithm, achieving similar metrics to SGD-based models while reducing training time by 50%, significantly lowering compute costs. </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2021 - 2025 (contd.)</div>
             <div class="timeline-title">IIIT Bhubaneswar</div>
-            <div class="timeline-description"> currently pursuing a Bachelors in CSE, with a GPA of 9.30</div>
+            <div class="timeline-description"> currently pursuing a Bachelors in CSE, with a GPA of 9.30/10.0</div>
         </div>
     </section>
 
-    <section id="blog">
+    <!-- <section id="blog">
         <h2>Blog</h2>
         <div class="post">
             <a href="https://schatt.substack.com/p/mathematical-generalization-of-ml" class="post-title">Mathematical generalization of ML</a>
             <div class="post-date">Jan, 2024</div>
             <div class="post-description">NNothing too deep. Just explains how math solve ya' problem...</div>
         </div>
-        <!-- <div class="post">
+        <div class="post">
             <a href="#" class="post-title">The Unreasonable Effectiveness of Recurrent Neural Networks</a>
             <div class="post-date">May 21, 2015</div>
             <div class="post-description">There's something magical about Recurrent Neural Networks (RNNs)...</div>
-        </div> -->
-    </section>
+        </div>
+    </section> -->
 
     <section id="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>stone-grad</h3>
+                <h3>toy-bert <a href="https://github.com/subhajitchatterjee07/toy-BERT" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>A rough reimplementation of BERT.</p>
+            </div>
+            <div class="project-card">
+                <h3>toy-gippity <a href="https://github.com/subhajitchatterjee07/An-AutoRegressive-Model-from-scratch" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>A rough reimplementation of GPT(Causal LM) from scratch.</p>
+            </div>
+            <div class="project-card">
+                <h3>Ink <a href="https://github.com/subhajitchatterjee07/pykit-learn/blob/main/nn-z2h/prob_nn.ipynb" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>Neural nets solving the infinite monkey theorem (but only for names); baically a NN with embeddings.</p>
+            </div>
+            <div class="project-card">
+                <h3>blob <a href="https://github.com/subhajitchatterjee07/pykit-learn/blob/main/nn-z2h/makemore.ipynb" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>Bigram model from scratch. Count by two, dream in sequences.</p>
+            </div>
+            <div class="project-card">
+                <h3>stone-grad <a href="https://github.com/subhajitchatterjee07/toy-BERT" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
                 <p>A tiny reverse-mode autodiff engine (implements backpropagation over a dynamically built DAG).</p>
             </div>
-            <!-- <div class="project-card">
-                <h3>Helvet</h3>
-                <p>Trained a Causal LM from scratch.</p>
-            </div> -->
             <div class="project-card">
-                <h3>SQLeen</h3>
-                <p>converts natural language to SQL query and fetches relevant data.</p>
+                <h3>SQLeen <a href="https://github.com/subhajitchatterjee07/nl2sql-backend" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>an agentic framework that lets you query with DBs in natural language. (OOO)</p>
             </div>
             <div class="project-card">
-                <h3>sweet-pea</h3>
-                <p>A LLM fine-tuned on simple python programs with PEFT.</p>
+                <h3>sweet-pea <a href="" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
+                <p>A 1B LLM fine-tuned on simple python programs with PEFT.</p>
             </div>
             <div class="project-card">
-                <h3>Yeetcoin ! </h3>
+                <h3>Yeetcoin ! <a href="https://github.com/subhajitchatterjee07/YeetCoin" 
+                    target="_blank" 
+                    style="color: #ff0000; text-decoration: none; font-weight: bold;">🔗
+                 </a></h3>
                 <p>CTRL+ALT+YEET! to undo your transactions (just kidding!); A bitcoin built from scratch.</p>
-            </div>
-            <div class="project-card">
-                <h3>blob</h3>
-                <p>Bigram model from scratch. Count by two, dream in sequences</p>
-            </div>
-            <div class="project-card">
-                <h3>Ink</h3>
-                <p>Neural nets solving the infinite monkey theorem (but only for names).</p>
             </div>
         </div>
     </section>
 
     <section id="publications">
         <h2> Publications</h2>
-        <h3> Preprints will be uploaded soon : )</h3>
+        <h3> <a href="https://www.sciencedirect.com/science/article/abs/pii/B9780443185090000074" 
+            target="_blank" 
+            style="color: #ff0000; text-decoration: none; font-weight: bold;">
+            Imaging signatures for different mutation estimation for brain cancer 🔗
+         </a>  </h3>
         <!-- <h2>Selected Publications</h2>
         <div class="publication">
             <h3>Deep Visual-Semantic Alignments for Generating Image Descriptions</h3>
@@ -421,6 +420,34 @@
 
     <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌓</button>
 
+    <footer style="margin-top: 60px; padding: 40px 0; border-top: 1px solid #eee; color: rgb(102, 102, 102);">
+        <!-- <div style="max-width: 850px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;"> -->
+            
+    
+        <div style="text-align: center; margin-top: 40px; font-size: 14px;">
+            <p>© 2025 Subhajit Chatterjee. Built with ☕ and 🤖</p>
+            <p>Contact: <a href="mailto:chatterjeesubhajit027@gmail.com" style="color: #ff0000; text-decoration: none;">chatterjeesubhajit027@gmail.com</a></p>
+        </div>
+    </footer>
+    
+    <style>
+    /* Dark mode styles for footer */
+    body.dark-mode footer {
+        border-top-color: #333;
+    }
+    
+    body.dark-mode footer h3 {
+        color: #fff;
+    }
+    
+    body.dark-mode footer a {
+        color: rgb(255, 102, 102);
+    }
+    
+    body.dark-mode footer {
+        color: #aaa;
+    }
+    </style>
     <script>
         // Dark mode implementation
         const darkModeToggle = document.querySelector('.dark-mode-toggle');
